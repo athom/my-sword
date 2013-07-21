@@ -1,5 +1,11 @@
 #! /bin/sh
 
+# pull
+if [ -d ~/.vim ]
+then
+  mv ~/.vim ~/.vim-bk
+fi
+git clone http://github.com/athom/my-sword.git ~/.vim
 
 # install vundle
 if [ ! -d ~/.vim/bundle/vundle ]

@@ -4,23 +4,35 @@ This is my vim cofiguration, I put it to github for saving my time to copy&paste
 
 ## Quick Start
 
+#### One Line Installation
+
+	```
+	curl https://github.com/athom/my-sword/blob/master/install.sh | bash
+	```
+
+
+#### Manually Installation
+
 1. Clone it 
 
      ```
      $ git clone http://github.com/athom/my-sword.git ~/.vim
      ``` 
 
-2. Install and Configure [Vundle]
-
-
-
-3. Link vimrc files to your home
+2. Install [Vundle](https://github.com/gmarik/vundle)
 
      ```
-     cd ~/.vim; ./install.sh
+	 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
      ```
 
-4. Install vim plugins 
+3. Link vimrc
+
+	```
+	ln -s ~/vim/_vimrc ~/.vimrc
+	ln -s ~/vim/_gvimrc ~/.gvimrc
+	```
+	
+4. Install plugins
 
 	```
 	vim +BundleInstall +qa
