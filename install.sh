@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/bash
 
 # pull
 if [ -d ~/.vim ]
@@ -13,6 +13,7 @@ then
   git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 fi
 
+echo "link configurations"
 # rename .vimrc
 if [ -f ~/.vimrc ]
 then
@@ -31,4 +32,5 @@ ln -s $path/_vimrc ~/.vimrc
 ln -s $path/_gvimrc ~/.gvimrc
 
 # install plugins
+echo "install plugins"
 vim +BundleInstall +qa
