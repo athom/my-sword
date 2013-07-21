@@ -1,0 +1,143 @@
+" let Vundle manage Vundle
+" required vundles 
+Bundle 'gmarik/vundle'
+
+" Color {{{1
+"Bundle 'csExplorer.vim'
+"Bundle 'vim-scripts/peaksea'
+" }}}1
+
+" Basic Editing {{{1
+"Bundle 'Lokaltog/vim-easymotion'
+"Bundle 'ervandew/supertab'
+"Bundle 'bsl/obviousmode'
+Bundle 'L9'
+Bundle 'FuzzyFinder'
+"Bundle 'surround.vim'
+"Bundle 'grep.vim'
+"Bundle 'bsl/obviousmode'
+Bundle 'AfterColors.vim'
+"Bundle 'camelcasemotion'
+"Bundle 'toggle_words.vim'
+"Bundle 'scratch.vim'
+"Bundle 'matchit.zip'
+" }}}1
+
+" Coding {{{1
+"Bundle 'Yggdroot/indentLine'
+"Bundle 'scrooloose/syntastic.git'
+"Bundle 'scrooloose/nerdcommenter'
+"Bundle 'majutsushi/tagbar'
+Bundle 'techlivezheng/vim-plugin-minibufexpl'
+"Bundle 'AndrewRadev/linediff.vim.git'
+"Bundle 'xuhdev/SingleCompile'
+"Bundle 'endwise.vim'
+"Bundle 'Bexec'
+Bundle 'athom/comments.vim'
+"Bundle 'Raimondi/delimitMate'
+Bundle 'Shougo/unite.vim'
+Bundle 'bling/vim-airline'
+
+" }}}1
+
+" Advanced Editing {{{1
+"Bundle 'AutoComplPop'
+"Bundle 'vimwiki'
+"Bundle 'vis'
+"Bundle 'VisIncr'
+"Bundle 'bufexplorer.zip'
+"Bundle 'Align'
+"Bundle 'LargeFile'
+"Bundle 'ZoomWin'
+"Bundle 'genutils'
+"Bundle 'foldcol.vim'
+"Bundle 'foldutil.vim'
+"Bundle 'sessionman.vim'
+"Bundle 'drmingdrmer/xptemplate.git'
+"Bundle 'range-search.vim'
+"Bundle 'tpope/vim-afterimage.git'
+"Bundle 'chrisbra/NrrwRgn.git'
+Bundle 'mileszs/ack.vim.git'
+"Bundle 'tpope/vim-abolish.git'
+"}}}1
+
+" Utils {{{1
+"Bundle 'renamer.vim'
+"Bundle 'DirDiff.vim'
+"Bundle 'DirDo.vim'
+"Bundle 'greplace.vim'
+"Bundle 'ViewOutput'
+"Bundle 'ScreenShot'
+"Bundle 'HiColors'
+"Bundle 'TVO--The-Vim-Outliner'
+"Bundle 'TwitVim'
+"Bundle 'vimGTD'
+"Bundle 'tangledhelix/vim-octopress.git'
+"Bundle 'kikijump/tslime.vim.git'
+Bundle 'scrooloose/nerdtree.git'
+"Bundle 'sjl/vitality.vim'
+"Bundle 'vim-scripts/lookupfile.git'
+Bundle 'athom/current-func-info.vim'
+
+" not possible to redefine keys, install vimcommander manually 
+"Bundle 'lpenz/vimcommander'
+"}}}1
+
+" Ruby Vundles {{{1
+"Bundle 'janx/vim-rubytest'
+Bundle 'tpope/vim-rails.git'
+"Bundle 'ri-browser'
+Bundle 'vim-ruby/vim-ruby.git'
+Bundle 'msanders/snipmate.vim'
+" }}}1
+
+" Python Vundles {{{1
+Bundle 'python.vim'
+Bundle 'fs111/pydoc.vim'
+"Bundle 'kevinw/pyflakes-vim.git' # use syntastic instead
+Bundle 'python_match.vim'
+" }}}1
+
+" Web Vundles {{{1
+Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+Bundle 'mattn/zencoding-vim'
+Bundle 'sukima/xmledit'
+Bundle 'othree/xml.vim'
+Bundle 'jsbeautify'
+Bundle 'vim-coffee-script'
+Bundle "JulesWang/css.vim"
+" }}}1
+
+" Git Utils {{{1
+Bundle 'tpope/vim-fugitive'
+Bundle 'gregsexton/gitv'
+Bundle 'Gist.vim'
+"}}}1
+
+"" C/C++ Bundles {{{1
+"for i in ['c.vim', 'CRefVim']
+  "Bundle i
+"endfor
+"" }}}1
+
+"" Go Bundles {{{1
+"Bundle 'jnwhiteh/vim-golang'
+Bundle 'athom/more-colorful.vim'
+"" }}}1
+
+" SQL Vundles {{{1
+"Bundle 'SQLUtilities'
+"Bundle 'dbext.vim'
+" }}}1
+
+"" games {{{1
+"for name in ['sokoban.vim', 'TeTrIs.vim']
+  "Bundle name
+"endfor
+""}}}1
+
+Bundle 'rizzatti/funcoo.vim'
+Bundle 'rizzatti/dash.vim'
+" Bundle 'humiaozuzu/TabBar'
+
+" vim: ft=vim

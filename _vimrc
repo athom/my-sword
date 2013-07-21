@@ -1,12 +1,12 @@
 " URL: http://vim.wikia.com/wiki/Example_vimrc
+" vim: foldmethod=marker
 " Authors: http://vim.wikia.com/wiki/Vim_on_Freenode
 " Description: A minimal, but feature rich, example .vimrc. If you are a
 "              newbie, basing your first .vimrc on this file is a good choice.
 "              If you're a more advanced user, building your own .vimrc based
 "              on this file is still a good idea.
 
-"------------------------------------------------------------
-" Features {{{1
+"## Features {{{1
 "
 " These options and commands enable some very useful features in Vim, that
 " no user should have to live without.
@@ -22,9 +22,9 @@ filetype indent plugin on
 
 " Enable syntax highlighting
 syntax on
+" }}}1
 
 
-"------------------------------------------------------------
 " Must have options {{{1
 "
 " These are highly recommended options.
@@ -64,9 +64,9 @@ set hlsearch
 " such, it may be a good idea to disable them and use the securemodelines
 " script, <http://www.vim.org/scripts/script.php?script_id=1876>.
 " set nomodeline
+" }}}1
 
 
-"------------------------------------------------------------
 " Usability options {{{1
 "
 " These are options that users frequently set in their .vimrc. Some of them
@@ -110,7 +110,7 @@ set visualbell
 set t_vb=
 
 " Enable use of the mouse for all modes
-set mouse=a
+set mouse+=a
 
 " Set the command window height to 2 lines, to avoid many cases of having to
 " "press <Enter> to continue"
@@ -118,15 +118,16 @@ set cmdheight=2
 
 " Display line numbers on the left
 set number
+set numberwidth=1 
 
 " Quickly time out on keycodes, but never time out on mappings
 set notimeout ttimeout ttimeoutlen=200
 
 " Use <F11> to toggle between 'paste' and 'nopaste'
 set pastetoggle=<F11>
+" }}}1
 
 
-"------------------------------------------------------------
 " Indentation options {{{1
 "
 " Indentation settings according to personal preference.
@@ -141,20 +142,317 @@ set expandtab
 " two characters wide.
 "set shiftwidth=2
 "set tabstop=2
+" }}}1
 
 
-"------------------------------------------------------------
 " Mappings {{{1
-"
-" Useful mappings
+" Set leader key
+let g:mapleader='\'
 
+" Search realated mappings {{{2
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
 " which is the default
 map Y y$
 
-" Map <C-L> (redraw screen) to also turn off search highlighting until the
+" Search selected text
+vnoremap * y/\V<C-R>=escape(@@,"/\\")<CR><CR>
+
+" Map <C-Q>l (redraw screen) to also turn off search highlighting until the
 " next search
-nnoremap <C-L> :nohl<CR><C-L>
+"nnoremap <C-Q>l :nohl<CR><C-Q>l
+nnoremap <CR> :nohlsearch<CR><CR>
+" }}}2
+
+" Naviation mappings {{{2
+" Easy movement between windows
+set winminheight=0
+nmap <C-j> <C-W>j
+nmap <C-k> <C-W>k
+nmap <C-h> <c-w>h
+nmap <C-l> <c-w>l
+
+" Make the navigation on insert mode easier
+imap <C-j> <down>
+imap <C-k> <up>
+imap <C-B> <Left>
+imap <C-F> <Right>
+imap <C-D> <Del>
+imap <C-A> <Home>
+imap <C-BS> <C-O>B<C-O>dE
+inoremap <C-E> <C-R>=col('.') == col('$') ? "\<lt>C-E>" : "\<lt>End>"<CR>
+
+" Following key maps will make command mode's navigation easier
+cnoremap <C-A> <Home>
+cnoremap <C-B> <left>
+cnoremap <C-F> <right>
+cnoremap <C-X> <Del>
+
+" Following key maps will make increase/decrease the width/height of window easier
+nmap - <C-W>-
+nmap = <C-W>+
+nmap _ 5<C-W><
+nmap + 5<C-W>>
+
+" Mappings for quickfix mode 
+nnoremap <xF4>   :cnext \| norm zz<CR>
+nnoremap <S-xF4> :cprev \| norm zz<CR>
+noremap <C-F4>   :cnfile <CR>
+nnoremap <S-C-F4> :cpfile <CR>
+
+" Make it easy to upload/reload .vimrc
+if has("gui_running")
+  nmap ,s :source $HOME/.vimrc \| source $HOME/.gvimrc<CR>
+else
+  nmap ,s :source $HOME/.vimrc<CR>
+endif
+nmap ,v :e $HOME/.vimrc<CR> 
+"}}}2
+
+" Folder mappings{{{2
+nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+" }}}2
+
+" Shell related TODO{{{2
+" Ctrl_W e opens up a vimshell in a vertically split window
+" Ctrl_W E opens up a vimshell in a vertically split window
+" The shell window will be auto closed after termination
+nmap <C-W>e :new \| vimshell bash<CR>
+nmap <C-W>E :vnew \| vimshell bash<CR>
+" }}}2
+
+" Use Q for formatting the current paragraph (or selection)
+vmap Q gq
+nmap Q gqap
+
+" Copy, Paste related {{{2
+" The default delete is sucking, it will recover the register  
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+"vnoremap <leader>p "_dP
+" copy and paste text accross different vim process
+vnoremap <leader>y "+y
+vnoremap <leader>x "+x
+nnoremap <leader>p "+p
+
+" }}}2
+
+" Saeve file{{{2
+"http://vim.wikia.com/wiki/Set_working_directory_to_the_current_file
+" use :w!! to write to a file using sudo if you forgot to 'sudo vim file'
+" (it will prompt for sudo password when writing)
+cmap w!! %!sudo tee > /dev/null %
+" }}}2
+
+"}}}1
 
 
-"------------------------------------------------------------
+" File options {{{1
+" Dont bother me with swap files{{{2
+set noswapfile
+" }}}2
+"}}}1
+
+
+" Autocmds {{{1
+" Load Golang plugin"{{{2
+filetype off
+filetype plugin indent off
+set runtimepath+=$GOROOT/misc/vim
+filetype plugin indent on
+syntax on
+"}}}2
+
+"auto format when saving files {{{2
+
+" Golang (*.go)  file will be gofmt when saving file {{{3
+au BufWritePost *.go :silent Fmt
+"}}}3
+
+" Javascript (*.js) file will be formated when saving file {{{3
+" autocmd BufWritePost *.js :call g:Jsbeautify()
+"}}}3
+"}}}2
+
+" }}}1
+
+
+" Plugin Related {{{1
+" Use Vunble {{{2
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+source ~/.vim/VundleFile
+"}}}2
+
+" Settings for comments.vim {{{2
+let g:comments_map_keys = 0
+" key-mappings for comment line in normal mode
+noremap  <silent> <C-c> :call CommentLine()<CR>
+" key-mappings for range comment lines in visual <Shift-V> mode
+vnoremap <silent> <C-c> :call RangeCommentLine()<CR>
+" key-mappings for un-comment line in normal mode
+noremap  <silent> <C-x> :call UnCommentLine()<CR>
+" key-mappings for range un-comment lines in visual <Shift-V> mode
+vnoremap <silent> <C-x> :call RangeUnCommentLine()<CR>
+" }}}2
+
+" Settings for current_func_info.vim {{{2
+noremap <C-@>f:call cfi#format("%s\n", "")<CR>
+" }}}2
+
+" Open directory with NERDTree {{{2
+autocmd VimEnter * call OpenWithNERDTree()
+
+function! OpenWithNERDTree()
+  if 0 == argc()
+    NERDTree
+  endif
+endfunction
+" }}}2
+
+" Trigger Dash {{{2
+nmap <silent> ,d <Plug>DashSearch
+"}}}2
+
+" Settings for FuzzyFinder {{{2
+nnoremap <C-P>  :FufCoverageFile!<cr>
+let g:fuf_coveragefile_exclude = '\v\~$|\.(o|exe|dll|bak|orig|swp)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|(tmp|log|db/migrate|vendor)'
+let g:fuf_enumeratingLimit = 5000
+let g:fuf_coveragefile_prompt = '=>'
+" }}}2
+
+" Ack Mappings {{{2
+nmap <C-A> :call AckWord()<CR>
+vmap <C-A> :call AckWordV()<CR>
+nmap <C-@>l :call AckDoubleQuote()<CR>
+
+function! AckWord() "{{{3
+  let l:cWord = expand("<cword>")
+  if empty(l:cWord)
+    echo "Please selece a word"
+  else
+    exe ":Ack"  l:cWord
+  endif 
+endfunction
+"}}}3
+
+function! AckWordV() "{{{3
+   let l:selectedText = s:get_visual_selection()
+   let l:wds = split(l:selectedText, " ")
+	 let joinedWords = join(l:wds)
+	 let searchText = "\"".joinedWords."\""
+   exe ":Ack"  searchText
+endfunction
+"}}}3
+
+function! AckDoubleQuote() "{{{3
+	let l:curLine = getline(".")
+	if empty(l:curLine)
+		echo "empty line"
+		return
+	endif 
+	let l:arr = matchstr(l:curLine, '[\"].*\"')
+	let l:matchedText = l:arr[1:-2]
+	if l:matchedText != ""
+   	exe ":Ack"  l:matchedText
+	else
+		let l:arr2 = matchstr(l:curLine, "[\'].*\'")
+		let l:matchedText2 = l:arr2[1:-2]
+		if l:matchedText2 != ""
+			exe ":Ack"  l:matchedText2
+		endif
+	endif
+endfunction
+"}}}3
+
+function! s:get_visual_selection() "{{{3
+	 " Why is this not a built-in Vim script function?!
+	 let [lnum1, col1] = getpos("'<")[1:2]
+	 let [lnum2, col2] = getpos("'>")[1:2]
+	 let lines = getline(lnum1, lnum2)
+	 let lines[-1] = lines[-1][: col2 - (&selection == 'inclusive' ?  1 : 2)]
+	 let lines[0] = lines[0][col1 - 1:]
+	 return join(lines, "\n")
+endfunction
+"}}}3
+" }}}2
+
+" }}}1
+
+
+" Color related {{{1
+if !has("gui_running")
+  set t_Co=256 " enable 256 colors refs: http://vim.wikia.com/wiki/256_colors_in_vim
+endif
+colorscheme yesterday
+" }}}1
+
+
+" Customlize Related {{{1
+if filereadable(expand('~/.vimrc.local'))
+    source ~/.vimrc.local
+endif
+
+" }}}1
+
+
+" Project Configurations "{{{1
+" Jump to template file for Qortex Project {{{2
+nmap <C-@>j :call JumpToTemplate()<CR>
+function! JumpToTemplate()
+	let l:curLine = getline(".")
+	if empty(l:curLine)
+		echo "empty line"
+		return
+	endif 
+	let l:arr = matchstr(l:curLine, '\".*\"')
+
+	let l:fn = "templates/".l:arr[1:-2].".html"
+	if filewritable(l:fn)
+		exec('e '.l:fn)
+		return
+	endif
+
+	let l:paths = split(l:fn, "\/")	
+	let l:alternateFile = (join(l:paths[:-2], "/")).'/_'.split(l:fn, "\/")[-1]
+	if filewritable(l:alternateFile)
+		exec('e '.l:alternateFile)
+		return
+	endif
+endfunction
+" }}}2
+
+" Load Workspace 
+let s:WorkspaceFileName = "workspace.vim"
+
+function! GetWorkspaceFileName()
+  let s:current_dir=getcwd()
+  let s:root_dir='/'
+  let l:workspace_file_full_path="/"
+  while s:current_dir != s:root_dir
+    let s:tmp_string=s:current_dir . "/" . s:WorkspaceFileName
+    if filereadable(s:tmp_string)
+      let l:workspace_file_full_path=s:tmp_string
+      break
+    endif
+    let s:index=strridx(s:current_dir, "/")
+    " if s:current_dir==”/home”, s:index will == 0, but strpart() needs
+    " length == at least 1 to get ‘/’
+    if s:index == 0
+      let s:index=1
+    endif
+    " cut string, remove the characters after last '/'
+    let s:current_dir=strpart(s:current_dir, 0, s:index)
+  endwhile
+  "return the full path of workspace file if succeeds, otherwise '/'
+  return l:workspace_file_full_path
+endfunction
+
+" get full path of workspace file
+let s:workspace_file_full_path=GetWorkspaceFileName()
+
+if filereadable(s:workspace_file_full_path)
+  exec 'source' . s:workspace_file_full_path
+endif
+
+" }}}1
+
