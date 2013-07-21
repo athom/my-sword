@@ -7,7 +7,7 @@ This is my vim cofiguration, I put it to github for saving my time to copy&paste
 #### One Line Installation
 
 	```
-	curl https://github.com/athom/my-sword/blob/master/install.sh | bash
+	curl https://raw.github.com/athom/my-sword/master/install.sh | bash
 	```
 
 
