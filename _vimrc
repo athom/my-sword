@@ -160,7 +160,7 @@ vnoremap * y/\V<C-R>=escape(@@,"/\\")<CR><CR>
 " Map <C-Q>l (redraw screen) to also turn off search highlighting until the
 " next search
 "nnoremap <C-Q>l :nohl<CR><C-Q>l
-nnoremap <CR> :nohlsearch<CR><CR>
+"nnoremap <CR> :nohlsearch<CR><CR>
 " }}}2
 
 " Naviation mappings {{{2
@@ -273,6 +273,9 @@ au BufWritePost *.go :silent Fmt
 "}}}3
 "}}}2
 
+" Use 8 spaces as indent for Golang {{{2
+autocmd FileType go setlocal et sta shiftwidth=8 softtabstop=8 
+" }}}2
 " }}}1
 
 
@@ -455,4 +458,3 @@ if filereadable(s:workspace_file_full_path)
 endif
 
 " }}}1
-

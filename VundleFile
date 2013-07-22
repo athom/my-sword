@@ -34,7 +34,7 @@ Bundle 'techlivezheng/vim-plugin-minibufexpl'
 "Bundle 'endwise.vim'
 "Bundle 'Bexec'
 Bundle 'athom/comments.vim'
-"Bundle 'Raimondi/delimitMate'
+Bundle 'Raimondi/delimitMate'
 Bundle 'Shougo/unite.vim'
 Bundle 'bling/vim-airline'
 
