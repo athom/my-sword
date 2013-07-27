@@ -170,6 +170,7 @@ nmap <C-j> <C-W>j
 nmap <C-k> <C-W>k
 nmap <C-h> <c-w>h
 nmap <C-l> <c-w>l
+nmap q <C-W>c
 
 " Make the navigation on insert mode easier
 imap <C-j> <down>
@@ -220,7 +221,7 @@ nmap <C-W>e :new \| vimshell bash<CR>
 nmap <C-W>E :vnew \| vimshell bash<CR>
 " }}}2
 
-" Shift Text and indent ttp://vim.wikia.com/wiki/Shifting_blocks_visually {{{2
+" Shift Text and indent http://vim.wikia.com/wiki/Shifting_blocks_visually {{{2
 vnoremap > >gv
 vnoremap < <gv
 inoremap <S-Tab> <C-D>
@@ -229,9 +230,9 @@ vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 " }}}2
 
-" Use Q for formatting the current paragraph (or selection)
-vmap Q gq
-nmap Q gqap
+" Map Q to q, for it's relly a rare used {{{2
+nnoremap Q q
+"}}}2
 
 " Copy, Paste related {{{2
 " The default delete is sucking, it will recover the register  
@@ -283,7 +284,7 @@ au BufWritePost *.go :silent Fmt
 "}}}2
 
 " Use 8 spaces as indent for Golang {{{2
-autocmd FileType go setlocal et sta shiftwidth=8 softtabstop=8 
+autocmd FileType go setlocal et sta shiftwidth=8 softtabstop=8 | set expandtab
 " }}}2
 " }}}1
 
@@ -392,8 +393,8 @@ endfunction
 " }}}2
 
 " Settings for YouCompleteMe{{{2
-"let g:ycm_autoclose_preview_window_after_completion = 1
-set completeopt=menuone
+"set completeopt=menuone
+let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_complete_in_strings = 0
 let g:ycm_min_num_of_chars_for_completion = 3
 let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<C-N>']

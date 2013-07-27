@@ -108,7 +108,7 @@ Bundle 'python_match.vim'
 
 " Web Vundles {{{1
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'mattn/zencoding-vim'
+"Bundle 'mattn/zencoding-vim'
 Bundle 'sukima/xmledit'
 Bundle 'othree/xml.vim'
 Bundle 'jsbeautify'
