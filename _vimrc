@@ -75,7 +75,7 @@ set hlsearch
 " use is very much a personal preference, but they are harmless.
 
 " Use case insensitive search, except when using capital letters
-set ignorecase
+"set ignorecase
 set smartcase
 
 " Allow backspacing over autoindent, line breaks and start of insert action
@@ -220,6 +220,15 @@ nmap <C-W>e :new \| vimshell bash<CR>
 nmap <C-W>E :vnew \| vimshell bash<CR>
 " }}}2
 
+" Shift Text and indent ttp://vim.wikia.com/wiki/Shifting_blocks_visually {{{2
+vnoremap > >gv
+vnoremap < <gv
+inoremap <S-Tab> <C-D>
+nnoremap <S-Tab> <<
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
+" }}}2
+
 " Use Q for formatting the current paragraph (or selection)
 vmap Q gq
 nmap Q gqap
@@ -324,6 +333,9 @@ let g:fuf_coveragefile_prompt = '=>'
 " }}}2
 
 " Ack Mappings {{{2
+" high light search result
+let g:ackhighlight = 1
+
 nmap <C-A> :call AckWord()<CR>
 vmap <C-A> :call AckWordV()<CR>
 nmap <C-@>l :call AckDoubleQuote()<CR>
@@ -379,6 +391,37 @@ endfunction
 "}}}3
 " }}}2
 
+" Settings for YouCompleteMe{{{2
+"let g:ycm_autoclose_preview_window_after_completion = 1
+set completeopt=menuone
+let g:ycm_complete_in_strings = 0
+let g:ycm_min_num_of_chars_for_completion = 3
+let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<C-N>']
+let g:ycm_add_preview_to_completeopt = 0
+"let g:ycm_filetype_whitelist = { 
+      "\ 'cpp' : 1,
+      "\ 'c' : 1,
+      "\ 'go' : 1,
+      "\ 'js' : 1,
+"\}
+
+let g:ycm_filetype_blacklist = {
+      \ 'notes' : 1,
+      \ 'markdown' : 1,
+      \ 'text' : 1,
+\}
+
+" }}}2
+"
+" Settings for Syntastic{{{2
+let g:syntastic_check_on_wq=0
+" }}}2
+
+" Mappings for HexHighlight{{{2
+nmap <leader>hl          <Plug>ToggleHexHighlight
+nmap <leader>hs   <Plug>ToggleSchemeHighlight
+" }}}2
+
 " }}}1
 
 
@@ -387,6 +430,22 @@ if !has("gui_running")
   set t_Co=256 " enable 256 colors refs: http://vim.wikia.com/wiki/256_colors_in_vim
 endif
 colorscheme yesterday
+
+" MiniBufExpl Colors {{{2
+ hi MBENormal               guifg=#808080 guibg=fg
+ hi MBEChanged              guifg=#CD5907 guibg=fg
+ hi MBEVisibleNormal        guifg=#5DC2D6 guibg=fg
+ hi MBEVisibleChanged       guifg=#F1266F guibg=fg
+ hi MBEVisibleActiveNormal  guifg=#A6DB29 guibg=fg
+ hi MBEVisibleActiveChanged guifg=#F1266F guibg=fg
+" }}}2
+" }}}1
+
+
+" Font related {{{1
+if has("gui_running")
+  set guifont=Monaco:h14
+endif
 " }}}1
 
 
@@ -394,6 +453,54 @@ colorscheme yesterday
 if filereadable(expand('~/.vimrc.local'))
     source ~/.vimrc.local
 endif
+
+" GenTag {{{2
+nmap <C-\> :call GenTags()<CR>
+
+function! GenTags()
+  let s:r0 = system("rm ./tags")
+  if empty(s:r0)
+    echo "old tags removed"
+  else
+    "echoerr s:r0
+  endif
+
+  let s:r1 = system("ctags -aR --languages=go ../../../")
+  if empty(s:r1)
+    echo "Tag gernated"
+  else
+    "echoerr s:r1
+  endif
+endfunction
+
+" SwirchRoot {{{2
+nmap <leader>cd :call SwitchRoot()<CR>
+
+function! SwitchRoot()
+  let cp = expand("%:p:h")
+  let paths = split(cp, "/")
+  let to_path = ""
+  let root_map = {"github.com":2, "labix.org":3, "launchpad.net": 1}
+  for r in ["github.com", "labix.org", "launchpad.net"]
+    let i = index(paths, r)
+    if i == -1
+      continue
+    endif
+    let j = 0
+    while j <= i+root_map[r]
+      let to_path .= "/".paths[j]
+      let j += 1
+    endwhile
+  endfor
+  if to_path != ""
+    let cmd="lcd ".to_path
+    execute cmd
+    call nerdtree#closeTreeIfOpen()
+    call NERDTreeCWD()
+    execute "normal \<C-l>"
+    execute "normal \<C-j>"
+  endif
+endfunction
 
 " }}}1
 
@@ -458,3 +565,4 @@ if filereadable(s:workspace_file_full_path)
 endif
 
 " }}}1
+

@@ -2,10 +2,6 @@
 " required vundles 
 Bundle 'gmarik/vundle'
 
-" Color {{{1
-"Bundle 'csExplorer.vim'
-"Bundle 'vim-scripts/peaksea'
-" }}}1
 
 " Basic Editing {{{1
 "Bundle 'Lokaltog/vim-easymotion'
@@ -16,7 +12,6 @@ Bundle 'FuzzyFinder'
 "Bundle 'surround.vim'
 "Bundle 'grep.vim'
 "Bundle 'bsl/obviousmode'
-Bundle 'AfterColors.vim'
 "Bundle 'camelcasemotion'
 "Bundle 'toggle_words.vim'
 "Bundle 'scratch.vim'
@@ -40,8 +35,21 @@ Bundle 'bling/vim-airline'
 
 " }}}1
 
+" Jumping {{{1
+Bundle 'mhinz/vim-signify'
+" }}}1
+"
+" Colors {{{1
+Bundle 'AfterColors.vim'
+Bundle 'ap/vim-css-color'
+Bundle 'athom/hexHighlight'
+"Bundle 'csExplorer.vim'
+"Bundle 'vim-scripts/peaksea'
+" }}}1
+
 " Advanced Editing {{{1
 "Bundle 'AutoComplPop'
+"Bundle 'scrooloose/syntastic'
 "Bundle 'vimwiki'
 "Bundle 'vis'
 "Bundle 'VisIncr'
@@ -53,7 +61,7 @@ Bundle 'bling/vim-airline'
 "Bundle 'foldcol.vim'
 "Bundle 'foldutil.vim'
 "Bundle 'sessionman.vim'
-"Bundle 'drmingdrmer/xptemplate.git'
+Bundle 'drmingdrmer/xptemplate.git'
 "Bundle 'range-search.vim'
 "Bundle 'tpope/vim-afterimage.git'
 "Bundle 'chrisbra/NrrwRgn.git'
@@ -123,6 +131,7 @@ Bundle 'Gist.vim'
 "" Go Bundles {{{1
 "Bundle 'jnwhiteh/vim-golang'
 Bundle 'athom/more-colorful.vim'
+"Bundle 'nsf/gocode'
 "" }}}1
 
 " SQL Vundles {{{1
@@ -134,6 +143,10 @@ Bundle 'athom/more-colorful.vim'
 "for name in ['sokoban.vim', 'TeTrIs.vim']
   "Bundle name
 "endfor
+""}}}1
+
+" Code Compeletion {{{1
+Bundle 'Valloric/YouCompleteMe'
 ""}}}1
 
 Bundle 'rizzatti/funcoo.vim'
