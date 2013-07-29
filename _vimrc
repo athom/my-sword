@@ -211,6 +211,10 @@ nmap ,v :e $HOME/.vimrc<CR>
 
 " Folder mappings{{{2
 nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+set foldmethod=indent   "fold based on indent
+set foldnestmax=10      "deepest fold is 10 levels
+set nofoldenable        "dont fold by default
+set foldlevel=1         "this is just what i use
 " }}}2
 
 " Shell related TODO{{{2
@@ -423,6 +427,38 @@ nmap <leader>hl          <Plug>ToggleHexHighlight
 nmap <leader>hs   <Plug>ToggleSchemeHighlight
 " }}}2
 
+" Mappings for Tagbar{{{2
+nmap <leader>t :TagbarToggle<CR>
+
+let g:tagbar_type_go = {
+      \ 'ctagstype' : 'go',
+      \ 'kinds'     : [
+      \ 'p:package',
+      \ 'i:imports:1',
+      \ 'c:constants',
+      \ 'v:variables',
+      \ 't:types',
+      \ 'n:interfaces',
+      \ 'w:fields',
+      \ 'e:embedded',
+      \ 'm:methods',
+      \ 'r:constructor',
+      \ 'f:functions'
+      \ ],
+      \ 'sro' : '.',
+      \ 'kind2scope' : {
+      \ 't' : 'ctype',
+      \ 'n' : 'ntype'
+      \ },
+      \ 'scope2kind' : {
+      \ 'ctype' : 't',
+      \ 'ntype' : 'n'
+      \ },
+      \ 'ctagsbin'  : 'gotags',
+      \ 'ctagsargs' : '-sort -silent'
+      \ }
+" }}}2
+
 " }}}1
 
 
@@ -437,7 +473,7 @@ colorscheme yesterday
  hi MBEChanged              guifg=#CD5907 guibg=fg
  hi MBEVisibleNormal        guifg=#5DC2D6 guibg=fg
  hi MBEVisibleChanged       guifg=#F1266F guibg=fg
- hi MBEVisibleActiveNormal  guifg=#A6DB29 guibg=fg
+ hi MBEVisibleActiveNormal  guifg=#FF7B29 guibg=fg
  hi MBEVisibleActiveChanged guifg=#F1266F guibg=fg
 " }}}2
 " }}}1
