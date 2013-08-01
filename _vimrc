@@ -546,25 +546,25 @@ endfunction
 " Jump to template file for Qortex Project {{{2
 nmap <C-@>j :call JumpToTemplate()<CR>
 function! JumpToTemplate()
-	let l:curLine = getline(".")
-	if empty(l:curLine)
-		echo "empty line"
-		return
-	endif 
-	let l:arr = matchstr(l:curLine, '\".*\"')
+  let l:curLine = getline(".")
+  if empty(l:curLine)
+    echo "empty line"
+    return
+  endif 
+  let l:arr = matchstr(l:curLine, '\".*\"')
 
-	let l:fn = "templates/".l:arr[1:-2].".html"
-	if filewritable(l:fn)
-		exec('e '.l:fn)
-		return
-	endif
+  let l:fn = "templates/".l:arr[1:-2].".html"
+  if filewritable(l:fn)
+    exec('e '.l:fn)
+    return
+  endif
 
-	let l:paths = split(l:fn, "\/")	
-	let l:alternateFile = (join(l:paths[:-2], "/")).'/_'.split(l:fn, "\/")[-1]
-	if filewritable(l:alternateFile)
-		exec('e '.l:alternateFile)
-		return
-	endif
+  let l:paths = split(l:fn, "\/")	
+  let l:alternateFile = (join(l:paths[:-2], "/")).'/_'.split(l:fn, "\/")[-1]
+  if filewritable(l:alternateFile)
+    exec('e '.l:alternateFile)
+    return
+  endif
 endfunction
 " }}}2
 
