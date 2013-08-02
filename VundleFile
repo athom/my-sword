@@ -31,7 +31,7 @@ Bundle 'techlivezheng/vim-plugin-minibufexpl'
 Bundle 'athom/comments.vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'Shougo/unite.vim'
-Bundle 'bling/vim-airline'
+"Bundle 'bling/vim-airline'
 
 " }}}1
 
@@ -112,7 +112,7 @@ Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'sukima/xmledit'
 Bundle 'othree/xml.vim'
 Bundle 'jsbeautify'
-Bundle 'vim-coffee-script'
+Bundle 'kchmck/vim-coffee-script'
 Bundle "JulesWang/css.vim"
 " }}}1
 

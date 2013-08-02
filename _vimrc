@@ -123,8 +123,9 @@ set numberwidth=1
 " Quickly time out on keycodes, but never time out on mappings
 set notimeout ttimeout ttimeoutlen=200
 
-" Use <F11> to toggle between 'paste' and 'nopaste'
-set pastetoggle=<F11>
+" Set 'paste' and 'nopaste'
+nmap ,, :set paste<CR>
+nmap ,q :set nopaste<CR>
 " }}}1
 
 
@@ -210,11 +211,12 @@ nmap ,v :e $HOME/.vimrc<CR>
 "}}}2
 
 " Folder mappings{{{2
-nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
-set foldmethod=indent   "fold based on indent
-set foldnestmax=10      "deepest fold is 10 levels
-set nofoldenable        "dont fold by default
-set foldlevel=1         "this is just what i use
+nnoremap <SPACE> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+
+augroup folder
+  autocmd!
+  autocmd BufReadPost	*.go,*.js  setlocal foldmethod=syntax nofoldenable foldnestmax=3
+augroup END
 " }}}2
 
 " Shell related TODO{{{2
@@ -466,7 +468,8 @@ let g:tagbar_type_go = {
 if !has("gui_running")
   set t_Co=256 " enable 256 colors refs: http://vim.wikia.com/wiki/256_colors_in_vim
 endif
-colorscheme yesterday
+"colorscheme yesterday
+colorscheme last-night
 
 " MiniBufExpl Colors {{{2
  hi MBENormal               guifg=#808080 guibg=fg
