@@ -469,7 +469,6 @@ if executable('coffeetags')
         \ 'c:classes',
         \ 'm:methods',
         \ 'f:functions',
-        \ 'f:fields',
         \ 'o:object',
         \ 'v:variables',
         \ ],
