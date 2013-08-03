@@ -473,6 +473,7 @@ colorscheme last-night
 
 " MiniBufExpl Colors {{{2
  hi MBENormal               guifg=#808080 guibg=fg
+ hi MBESelecting            guifg=#BEEF13 guibg=fg
  hi MBEChanged              guifg=#CD5907 guibg=fg
  hi MBEVisibleNormal        guifg=#5DC2D6 guibg=fg
  hi MBEVisibleChanged       guifg=#F1266F guibg=fg
