@@ -287,6 +287,8 @@ au BufWritePost *.go :silent Fmt
 " Use 8 spaces as indent for Golang {{{2
 autocmd FileType go,coffee setlocal et sta shiftwidth=8 softtabstop=8 | set expandtab
 " }}}2
+
+set autoread
 " }}}1
 
 

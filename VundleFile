@@ -97,6 +97,7 @@ Bundle 'tpope/vim-rails.git'
 "Bundle 'ri-browser'
 Bundle 'vim-ruby/vim-ruby.git'
 Bundle 'msanders/snipmate.vim'
+"Bundle 'Keithbsmiley/rspec.vim'
 " }}}1
 
 " Python Vundles {{{1
