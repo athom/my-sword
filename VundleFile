@@ -97,7 +97,7 @@ Bundle 'tpope/vim-rails.git'
 "Bundle 'ri-browser'
 Bundle 'vim-ruby/vim-ruby.git'
 Bundle 'msanders/snipmate.vim'
-"Bundle 'Keithbsmiley/rspec.vim'
+Bundle 'Keithbsmiley/rspec.vim'
 " }}}1
 
 " Python Vundles {{{1
@@ -131,7 +131,7 @@ Bundle 'Gist.vim'
 
 "" Go Bundles {{{1
 "Bundle 'jnwhiteh/vim-golang'
-Bundle 'athom/more-colorful.vim'
+"Bundle 'athom/more-colorful.vim'
 "Bundle 'nsf/gocode'
 "" }}}1
 

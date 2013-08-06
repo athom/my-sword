@@ -295,7 +295,7 @@ set autoread
 " Plugin Related {{{1
 " Use Vunble {{{2
 filetype off
-set rtp+=~/.vim/bundle/vundle/
+set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
 source ~/.vim/VundleFile
 filetype plugin indent on
@@ -314,7 +314,7 @@ vnoremap <silent> <C-x> :call RangeUnCommentLine()<CR>
 " }}}2
 
 " Settings for current_func_info.vim {{{2
-noremap <C-@>f:call cfi#format("%s\n", "")<CR>
+noremap <C-@>f  :echo cfi#format("%s\n", "")<CR>
 " }}}2
 
 " Open directory with NERDTree {{{2
@@ -521,7 +521,8 @@ if !has("gui_running")
   set t_Co=256 " enable 256 colors refs: http://vim.wikia.com/wiki/256_colors_in_vim
 endif
 "colorscheme yesterday
-colorscheme last-night
+"colorscheme last-night
+colorscheme desert
 
 " MiniBufExpl Colors {{{2
  hi MBENormal               guifg=#808080 guibg=fg
