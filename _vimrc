@@ -517,6 +517,15 @@ let $CTAGS = substitute(s:ctags_opts, '\v\([nst]\)', '\\', 'g')
 
 " }}}2
 
+" Mappings for Thougbot Rspec{{{2
+let g:rspec_command = "!rspec --no-color {spec}"
+let g:rspec_command_launcher = "iterm"
+map <Leader>r :call RunCurrentSpecFile()<CR>
+map <Leader>n :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+" }}}2
+
 " }}}1
 
 
@@ -524,8 +533,10 @@ let $CTAGS = substitute(s:ctags_opts, '\v\([nst]\)', '\\', 'g')
 if !has("gui_running")
   set t_Co=256 " enable 256 colors refs: http://vim.wikia.com/wiki/256_colors_in_vim
 endif
+
 "colorscheme yesterday
-colorscheme last-night
+"colorscheme last-night
+colorscheme molokai
 "colorscheme desert
 
 " MiniBufExpl Colors {{{2

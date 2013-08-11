@@ -43,6 +43,8 @@ Bundle 'mhinz/vim-signify'
 Bundle 'AfterColors.vim'
 Bundle 'ap/vim-css-color'
 Bundle 'athom/hexHighlight'
+"Bundle 'sickill/vim-monokai'
+Bundle 'tomasr/molokai'
 "Bundle 'csExplorer.vim'
 "Bundle 'vim-scripts/peaksea'
 " }}}1
@@ -98,6 +100,9 @@ Bundle 'tpope/vim-rails.git'
 Bundle 'vim-ruby/vim-ruby.git'
 Bundle 'msanders/snipmate.vim'
 Bundle 'Keithbsmiley/rspec.vim'
+"Bundle 'thoughtbot/vim-rspec'
+Bundle 'iain/vim-rspec'
+Bundle 'tpope/vim-rvm'
 " }}}1
 
 " Python Vundles {{{1
