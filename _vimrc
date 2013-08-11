@@ -206,7 +206,7 @@ nmap ,v :e $HOME/.vimrc<CR>
 "}}}2
 
 " Folder mappings{{{2
-nnoremap <SPACE> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+nnoremap <leader><SPACE> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 
 augroup folder
   autocmd!
@@ -233,6 +233,10 @@ vnoremap <S-Tab> <gv
 
 " Map Q to q, for it's relly a rare used {{{2
 nnoremap Q q
+"}}}2
+
+" Use space to trigger command mode {{{2
+nnoremap <SPACE> :
 "}}}2
 
 " Copy, Paste related {{{2
@@ -521,8 +525,8 @@ if !has("gui_running")
   set t_Co=256 " enable 256 colors refs: http://vim.wikia.com/wiki/256_colors_in_vim
 endif
 "colorscheme yesterday
-"colorscheme last-night
-colorscheme desert
+colorscheme last-night
+"colorscheme desert
 
 " MiniBufExpl Colors {{{2
  hi MBENormal               guifg=#808080 guibg=fg
