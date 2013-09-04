@@ -291,6 +291,10 @@ au BufWritePost *.go :silent Fmt
 " Use 8 spaces as indent for Golang {{{2
 autocmd FileType go,coffee setlocal et sta shiftwidth=8 softtabstop=8 | set expandtab
 " }}}2
+"
+" Use 4 spaces as indent {{{2
+autocmd FileType javascript setlocal et sta shiftwidth=4 softtabstop=4 | set expandtab
+" }}}2
 
 set autoread
 " }}}1
@@ -318,7 +322,7 @@ vnoremap <silent> <C-x> :call RangeUnCommentLine()<CR>
 " }}}2
 
 " Settings for current_func_info.vim {{{2
-noremap <C-@>f  :echo cfi#format("%s\n", "")<CR>
+noremap <C-@>f  :echo cfi#format("%s", "")<CR>
 " }}}2
 
 " Open directory with NERDTree {{{2
@@ -484,8 +488,9 @@ if executable('coffeetags')
         \ 'o' : 'object',
         \ }
         \ }
-endif
+endif 
 
+" Ctags options 
 " Posix regular expressions for matching interesting items. Since this will 
 " be passed as an environment variable, no whitespace can exist in the options
 " so [:space:] is used instead of normal whitespaces.
@@ -515,6 +520,24 @@ let s:ctags_opts = '
 let $CTAGS = substitute(s:ctags_opts, '\v\([nst]\)', '\\', 'g')
 "}}}3
 
+"Ruby Rspec {{{3
+let g:tagbar_type_ruby = {
+    \ 'kinds' : [
+        \ 'm:modules',
+        \ 'c:classes',
+        \ 'd:describes',
+        \ 'C:contexts',
+        \ 'f:methods',
+        \ 'F:singleton methods'
+    \ ]
+\ }
+"}}}3
+
+"Javascript {{{3
+let g:tagbar_type_javascript = {
+    \ 'ctagsbin' : '/usr/local/bin/jsctags'
+    \ }
+"}}}3
 " }}}2
 
 " Mappings for Thougbot Rspec{{{2
@@ -538,7 +561,6 @@ endif
 "colorscheme last-night
 colorscheme molokai
 "colorscheme desert
-
 " MiniBufExpl Colors {{{2
  hi MBENormal               guifg=#808080 guibg=fg
  hi MBESelecting            guifg=#BEEF13 guibg=fg

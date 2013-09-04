@@ -9,7 +9,7 @@ Bundle 'gmarik/vundle'
 "Bundle 'bsl/obviousmode'
 Bundle 'L9'
 Bundle 'FuzzyFinder'
-"Bundle 'surround.vim'
+Bundle 'surround.vim'
 "Bundle 'grep.vim'
 "Bundle 'bsl/obviousmode'
 "Bundle 'camelcasemotion'
@@ -30,13 +30,13 @@ Bundle 'techlivezheng/vim-plugin-minibufexpl'
 "Bundle 'Bexec'
 Bundle 'athom/comments.vim'
 Bundle 'Raimondi/delimitMate'
-Bundle 'Shougo/unite.vim'
+"Bundle 'Shougo/unite.vim'
 "Bundle 'bling/vim-airline'
 
 " }}}1
 
 " Jumping {{{1
-Bundle 'mhinz/vim-signify'
+"Bundle 'mhinz/vim-signify'
 " }}}1
 "
 " Colors {{{1
@@ -107,25 +107,25 @@ Bundle 'tpope/vim-rvm'
 
 " Python Vundles {{{1
 Bundle 'python.vim'
-Bundle 'fs111/pydoc.vim'
+"Bundle 'fs111/pydoc.vim'
 "Bundle 'kevinw/pyflakes-vim.git' # use syntastic instead
-Bundle 'python_match.vim'
+"Bundle 'python_match.vim'
 " }}}1
 
 " Web Vundles {{{1
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+"Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 "Bundle 'mattn/zencoding-vim'
-Bundle 'sukima/xmledit'
-Bundle 'othree/xml.vim'
-Bundle 'jsbeautify'
+"Bundle 'sukima/xmledit'
+"Bundle 'othree/xml.vim'
+"Bundle 'jsbeautify'
 Bundle 'kchmck/vim-coffee-script'
 Bundle "JulesWang/css.vim"
 " }}}1
 
 " Git Utils {{{1
-Bundle 'tpope/vim-fugitive'
-Bundle 'gregsexton/gitv'
-Bundle 'Gist.vim'
+"Bundle 'tpope/vim-fugitive'
+"Bundle 'gregsexton/gitv'
+"Bundle 'Gist.vim'
 "}}}1
 
 "" C/C++ Bundles {{{1
@@ -136,7 +136,7 @@ Bundle 'Gist.vim'
 
 "" Go Bundles {{{1
 "Bundle 'jnwhiteh/vim-golang'
-Bundle 'athom/more-colorful.vim'
+"Bundle 'athom/more-colorful.vim'
 "Bundle 'nsf/gocode'
 "" }}}1
 
