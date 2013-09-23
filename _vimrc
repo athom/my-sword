@@ -562,8 +562,8 @@ if !has("gui_running")
 endif
 
 "colorscheme yesterday
-"colorscheme last-night
-colorscheme molokai
+colorscheme last-night
+"colorscheme molokai
 "colorscheme desert
 " MiniBufExpl Colors {{{2
  hi MBENormal               guifg=#808080 guibg=fg

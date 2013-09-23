@@ -136,7 +136,7 @@ Bundle "JulesWang/css.vim"
 
 "" Go Bundles {{{1
 "Bundle 'jnwhiteh/vim-golang'
-"Bundle 'athom/more-colorful.vim'
+Bundle 'athom/more-colorful.vim'
 Bundle 'cespare/vim-golang'
 Bundle 'dgryski/vim-godef'
 "" }}}1
