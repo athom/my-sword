@@ -206,12 +206,7 @@ nmap ,v :e $HOME/.vimrc<CR>
 "}}}2
 
 " Folder mappings{{{2
-nnoremap <leader><SPACE> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
-
-augroup folder
-  autocmd!
-  autocmd BufReadPost	*.go,*.js,*.coffee  setlocal foldmethod=syntax nofoldenable foldnestmax=3
-augroup END
+"nnoremap <leader><SPACE> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 " }}}2
 
 " Shell related TODO{{{2
@@ -233,6 +228,10 @@ vnoremap <S-Tab> <gv
 
 " Map Q to q, for it's relly a rare used {{{2
 nnoremap Q q
+"}}}2
+
+" Map g<C-] to C-] to show multiple choice for ctags {{{2
+nnoremap <C-]> g<C-]>
 "}}}2
 
 " Use space to trigger command mode {{{2
@@ -269,14 +268,6 @@ set noswapfile
 
 
 " Autocmds {{{1
-" Load Golang plugin"{{{2
-filetype off
-filetype plugin indent off
-set runtimepath+=$GOROOT/misc/vim
-filetype plugin indent on
-syntax on
-"}}}2
-
 "auto format when saving files {{{2
 
 " Golang (*.go)  file will be gofmt when saving file {{{3
@@ -424,6 +415,19 @@ let g:ycm_filetype_blacklist = {
       \ 'markdown' : 1,
       \ 'text' : 1,
 \}
+
+"let g:ycm_semantic_triggers =  {
+""  \   'c' : ['->', '.'],
+""  \   'objc' : ['->', '.'],
+""  \   'ocaml' : ['.', '#'],
+""  \   'cpp,objcpp' : ['->', '.', '::'],
+""  \   'perl' : ['->'],
+""  \   'php' : ['->', '::'],
+""  \   'cs,java,javascript,d,vim,python,perl6,scala,vb,elixir,go' : ['.'],
+""  \   'ruby' : ['.', '::'],
+"  \   'lua' : ['.', ':'],
+"  \   'erlang' : [':'],
+"\ }
 
 " }}}2
 "

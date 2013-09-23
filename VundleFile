@@ -23,7 +23,7 @@ Bundle 'surround.vim'
 "Bundle 'scrooloose/syntastic.git'
 "Bundle 'scrooloose/nerdcommenter'
 Bundle 'majutsushi/tagbar'
-Bundle 'techlivezheng/vim-plugin-minibufexpl'
+Bundle 'athom/vim-plugin-minibufexpl'
 "Bundle 'AndrewRadev/linediff.vim.git'
 "Bundle 'xuhdev/SingleCompile'
 "Bundle 'endwise.vim'
@@ -50,7 +50,7 @@ Bundle 'tomasr/molokai'
 " }}}1
 
 " Advanced Editing {{{1
-"Bundle 'AutoComplPop'
+Bundle 'AutoComplPop'
 "Bundle 'scrooloose/syntastic'
 "Bundle 'vimwiki'
 "Bundle 'vis'
@@ -137,7 +137,8 @@ Bundle "JulesWang/css.vim"
 "" Go Bundles {{{1
 "Bundle 'jnwhiteh/vim-golang'
 "Bundle 'athom/more-colorful.vim'
-"Bundle 'nsf/gocode'
+Bundle 'cespare/vim-golang'
+Bundle 'dgryski/vim-godef'
 "" }}}1
 
 " SQL Vundles {{{1
@@ -151,10 +152,8 @@ Bundle "JulesWang/css.vim"
 "endfor
 ""}}}1
 
-" Code Compeletion {{{1
+" Code Compeletion 
 Bundle 'Valloric/YouCompleteMe'
-""}}}1
-
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
 " Bundle 'humiaozuzu/TabBar'
