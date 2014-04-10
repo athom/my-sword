@@ -10,6 +10,7 @@ Bundle 'gmarik/vundle'
 Bundle 'L9'
 Bundle 'FuzzyFinder'
 Bundle 'surround.vim'
+Bundle 'cscope.vim'
 "Bundle 'grep.vim'
 "Bundle 'bsl/obviousmode'
 "Bundle 'camelcasemotion'
@@ -30,7 +31,9 @@ Bundle 'athom/vim-plugin-minibufexpl'
 "Bundle 'Bexec'
 Bundle 'athom/comments.vim'
 Bundle 'Raimondi/delimitMate'
+Bundle 'SirVer/ultisnips'
 "Bundle 'Shougo/unite.vim'
+
 "Bundle 'bling/vim-airline'
 
 " }}}1
@@ -50,7 +53,7 @@ Bundle 'tomasr/molokai'
 " }}}1
 
 " Advanced Editing {{{1
-Bundle 'AutoComplPop'
+"Bundle 'AutoComplPop'
 "Bundle 'scrooloose/syntastic'
 "Bundle 'vimwiki'
 "Bundle 'vis'
@@ -98,7 +101,7 @@ Bundle 'athom/current-func-info.vim'
 Bundle 'tpope/vim-rails.git'
 "Bundle 'ri-browser'
 Bundle 'vim-ruby/vim-ruby.git'
-Bundle 'msanders/snipmate.vim'
+"Bundle 'msanders/snipmate.vim'
 Bundle 'Keithbsmiley/rspec.vim'
 "Bundle 'thoughtbot/vim-rspec'
 Bundle 'iain/vim-rspec'
@@ -123,7 +126,7 @@ Bundle "JulesWang/css.vim"
 " }}}1
 
 " Git Utils {{{1
-"Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-fugitive'
 "Bundle 'gregsexton/gitv'
 "Bundle 'Gist.vim'
 "}}}1
@@ -139,6 +142,10 @@ Bundle "JulesWang/css.vim"
 Bundle 'athom/more-colorful.vim'
 Bundle 'cespare/vim-golang'
 Bundle 'dgryski/vim-godef'
+"" }}}1
+
+"" Hasell Bundles {{{1
+Bundle 'wlangstroth/vim-haskell'
 "" }}}1
 
 " SQL Vundles {{{1
@@ -157,5 +164,7 @@ Bundle 'Valloric/YouCompleteMe'
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
 " Bundle 'humiaozuzu/TabBar'
+
+Bundle 'terryma/vim-multiple-cursors'
 
 " vim: ft=vim

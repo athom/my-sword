@@ -285,9 +285,17 @@ autocmd FileType go,coffee setlocal et sta shiftwidth=8 softtabstop=8 | set expa
 "
 " Use 4 spaces as indent {{{2
 autocmd FileType javascript setlocal et sta shiftwidth=4 softtabstop=4 | set expandtab
+autocmd FileType cpp setlocal et sta shiftwidth=4 softtabstop=4 | set expandtab
+autocmd FileType c setlocal et sta shiftwidth=4 softtabstop=4 | set expandtab
+autocmd FileType cu setlocal et sta shiftwidth=4 softtabstop=4 | set expandtab
+autocmd FileType coffee setlocal et sta shiftwidth=2 softtabstop=2 | set expandtab
 " }}}2
 
 set autoread
+" }}}1
+
+" Git Related {{{1
+nmap <leader>b :Gblame<CR>
 " }}}1
 
 
@@ -401,7 +409,8 @@ endfunction
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_complete_in_strings = 0
 let g:ycm_min_num_of_chars_for_completion = 3
-let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<C-N>']
+let g:ycm_key_list_select_completion = ['<Down>', '<C-N>']
+let g:ycm_key_list_previous_completion= ['<Up>', '<C-P>']
 let g:ycm_add_preview_to_completeopt = 0
 "let g:ycm_filetype_whitelist = { 
       "\ 'cpp' : 1,
@@ -438,6 +447,12 @@ let g:syntastic_check_on_wq=0
 " Mappings for HexHighlight{{{2
 nmap <leader>hl          <Plug>ToggleHexHighlight
 nmap <leader>hs   <Plug>ToggleSchemeHighlight
+" }}}2
+"
+" Mappings for UltiSnips{{{2
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " }}}2
 
 " Mappings for Tagbar{{{2
@@ -664,6 +679,19 @@ function! JumpToTemplate()
     return
   endif
 endfunction
+" }}}2
+
+" Cscope settings{{{2
+"function! LoadCscope()
+  "let db = findfile("cscope.out", ".;")
+  "if (!empty(db))
+    "let path = strpart(db, 0, match(db, "/cscope.out$"))
+    "set nocscopeverbose " suppress 'duplicate connection' error
+    "exe "cs add " . db . " " . path
+    "set cscopeverbose
+  "endif
+"endfunction
+"au BufEnter /* call LoadCscope()"
 " }}}2
 
 " Load Workspace 
