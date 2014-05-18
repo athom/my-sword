@@ -113,7 +113,7 @@ set cmdheight=2
 
 " Display line numbers on the left
 set number
-set numberwidth=1 
+set numberwidth=1
 
 " Quickly time out on keycodes, but never time out on mappings
 set notimeout ttimeout ttimeoutlen=200
@@ -190,7 +190,7 @@ nmap = <C-W>+
 nmap _ 5<C-W><
 nmap + 5<C-W>>
 
-" Mappings for quickfix mode 
+" Mappings for quickfix mode
 nnoremap <xF4>   :cnext \| norm zz<CR>
 nnoremap <S-xF4> :cprev \| norm zz<CR>
 noremap <C-F4>   :cnfile <CR>
@@ -202,10 +202,12 @@ if has("gui_running")
 else
   nmap ,s :source $HOME/.vimrc<CR>
 endif
-nmap ,v :e $HOME/.vimrc<CR> 
+nmap ,v :e $HOME/.vimrc<CR>
 "}}}2
 
 " Folder mappings{{{2
+nmap <silent> ,f :set foldmethod=indent<CR>
+"set foldmethod=indent
 "nnoremap <leader><SPACE> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 " }}}2
 
@@ -239,7 +241,7 @@ nnoremap <SPACE> :
 "}}}2
 
 " Copy, Paste related {{{2
-" The default delete is sucking, it will recover the register  
+" The default delete is sucking, it will recover the register
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
 "vnoremap <leader>p "_dP
@@ -295,7 +297,8 @@ set autoread
 " }}}1
 
 " Git Related {{{1
-nmap <leader>b :Gblame<CR>
+nmap <leader>gb :Gblame<CR>
+nmap <leader>go :OpenGithubFile<CR>
 " }}}1
 
 
@@ -359,7 +362,7 @@ function! AckWord() "{{{3
     echo "Please selece a word"
   else
     exe ":Ack"  l:cWord
-  endif 
+  endif
 endfunction
 "}}}3
 
@@ -377,7 +380,7 @@ function! AckDoubleQuote() "{{{3
 	if empty(l:curLine)
 		echo "empty line"
 		return
-	endif 
+	endif
 	let l:arr = matchstr(l:curLine, '[\"].*\"')
 	let l:matchedText = l:arr[1:-2]
 	if l:matchedText != ""
@@ -412,7 +415,7 @@ let g:ycm_min_num_of_chars_for_completion = 3
 let g:ycm_key_list_select_completion = ['<Down>', '<C-N>']
 let g:ycm_key_list_previous_completion= ['<Up>', '<C-P>']
 let g:ycm_add_preview_to_completeopt = 0
-"let g:ycm_filetype_whitelist = { 
+"let g:ycm_filetype_whitelist = {
       "\ 'cpp' : 1,
       "\ 'c' : 1,
       "\ 'go' : 1,
@@ -507,10 +510,10 @@ if executable('coffeetags')
         \ 'o' : 'object',
         \ }
         \ }
-endif 
+endif
 
-" Ctags options 
-" Posix regular expressions for matching interesting items. Since this will 
+" Ctags options
+" Posix regular expressions for matching interesting items. Since this will
 " be passed as an environment variable, no whitespace can exist in the options
 " so [:space:] is used instead of normal whitespaces.
 " Adapted from: https://gist.github.com/2901844
@@ -576,9 +579,13 @@ if !has("gui_running")
   set t_Co=256 " enable 256 colors refs: http://vim.wikia.com/wiki/256_colors_in_vim
 endif
 
+colorscheme molokai "default
+ autocmd! BufEnter,BufNewFile *.go colo last-night
+ autocmd! BufLeave *.go colo molokai
+
 "colorscheme yesterday
-colorscheme last-night
-"colorscheme molokai
+"colorscheme last-night
+"colorscheme vividchalk
 "colorscheme desert
 " MiniBufExpl Colors {{{2
  hi MBENormal               guifg=#808080 guibg=fg
@@ -652,6 +659,20 @@ function! SwitchRoot()
   endif
 endfunction
 
+" Auto trim spaces at the end of line {{{2
+fun! StripTrailingWhitespace()
+  " Don't strip on these filetypes
+  if &ft =~ 'markdown'
+    return
+  endif
+  if &ft =~ 'md'
+    return
+  endif
+  %s/\s\+$//e
+endfun
+
+autocmd BufWritePre * call StripTrailingWhitespace()
+
 " }}}1
 
 
@@ -663,7 +684,7 @@ function! JumpToTemplate()
   if empty(l:curLine)
     echo "empty line"
     return
-  endif 
+  endif
   let l:arr = matchstr(l:curLine, '\".*\"')
 
   let l:fn = "templates/".l:arr[1:-2].".html"
@@ -672,7 +693,7 @@ function! JumpToTemplate()
     return
   endif
 
-  let l:paths = split(l:fn, "\/")	
+  let l:paths = split(l:fn, "\/")
   let l:alternateFile = (join(l:paths[:-2], "/")).'/_'.split(l:fn, "\/")[-1]
   if filewritable(l:alternateFile)
     exec('e '.l:alternateFile)
@@ -694,7 +715,7 @@ endfunction
 "au BufEnter /* call LoadCscope()"
 " }}}2
 
-" Load Workspace 
+" Load Workspace
 let s:WorkspaceFileName = "workspace.vim"
 
 function! GetWorkspaceFileName()

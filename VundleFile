@@ -1,5 +1,5 @@
 " let Vundle manage Vundle
-" required vundles 
+" required vundles
 Bundle 'gmarik/vundle'
 
 
@@ -32,6 +32,7 @@ Bundle 'athom/vim-plugin-minibufexpl'
 Bundle 'athom/comments.vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
 "Bundle 'Shougo/unite.vim'
 
 "Bundle 'bling/vim-airline'
@@ -92,19 +93,18 @@ Bundle 'scrooloose/nerdtree.git'
 "Bundle 'vim-scripts/lookupfile.git'
 Bundle 'athom/current-func-info.vim'
 
-" not possible to redefine keys, install vimcommander manually 
+" not possible to redefine keys, install vimcommander manually
 "Bundle 'lpenz/vimcommander'
 "}}}1
 
 " Ruby Vundles {{{1
 "Bundle 'janx/vim-rubytest'
-Bundle 'tpope/vim-rails.git'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'tpope/vim-rails'
 "Bundle 'ri-browser'
-Bundle 'vim-ruby/vim-ruby.git'
 "Bundle 'msanders/snipmate.vim'
-Bundle 'Keithbsmiley/rspec.vim'
-"Bundle 'thoughtbot/vim-rspec'
-Bundle 'iain/vim-rspec'
+Bundle 'thoughtbot/vim-rspec'
+"Bundle 'iain/vim-rspec'
 Bundle 'tpope/vim-rvm'
 " }}}1
 
@@ -127,6 +127,9 @@ Bundle "JulesWang/css.vim"
 
 " Git Utils {{{1
 Bundle 'tpope/vim-fugitive'
+"Bundle 'mmozuras/vim-github-comment'
+Bundle 'tyru/open-browser.vim'
+Bundle 'tyru/open-browser-github.vim'
 "Bundle 'gregsexton/gitv'
 "Bundle 'Gist.vim'
 "}}}1
@@ -159,7 +162,7 @@ Bundle 'wlangstroth/vim-haskell'
 "endfor
 ""}}}1
 
-" Code Compeletion 
+" Code Compeletion
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
