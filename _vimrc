@@ -580,8 +580,12 @@ if !has("gui_running")
 endif
 
 colorscheme molokai "default
- autocmd! BufEnter,BufNewFile *.go colo last-night
- autocmd! BufLeave *.go colo molokai
+"autocmd! BufEnter,BufNewFile *.go colo last-night
+"autocmd! BufLeave *.go colo molokai
+let pwd = getcwd()
+if pwd == "/Users/yeer/go/src/github.com/theplant/qortex"
+  colorscheme last-night
+endif
 
 "colorscheme yesterday
 "colorscheme last-night
