@@ -328,7 +328,7 @@ noremap <C-@>f  :echo cfi#format("%s", "")<CR>
 " }}}2
 
 " Open directory with NERDTree {{{2
-autocmd VimEnter * call OpenWithNERDTree()
+"autocmd VimEnter * call OpenWithNERDTree()
 
 function! OpenWithNERDTree()
   if 0 == argc()
