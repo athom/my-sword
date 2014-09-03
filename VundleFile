@@ -33,7 +33,9 @@ Bundle 'athom/comments.vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
-"Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/vimproc'
+Bundle 'Shougo/neomru.vim'
 
 "Bundle 'bling/vim-airline'
 

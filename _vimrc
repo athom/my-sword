@@ -206,7 +206,7 @@ nmap ,v :e $HOME/.vimrc<CR>
 "}}}2
 
 " Folder mappings{{{2
-nmap <silent> ,f :set foldmethod=indent<CR>
+" nmap <silent> ,f :set foldmethod=indent<CR>
 "set foldmethod=indent
 "nnoremap <leader><SPACE> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 " }}}2
@@ -345,7 +345,20 @@ nmap <silent> ,d <Plug>DashSearch
 nnoremap <C-P>  :FufCoverageFile!<cr>
 let g:fuf_coveragefile_exclude = '\v\~$|\.(o|exe|dll|bak|orig|swp)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|(tmp|log|db/migrate|vendor)'
 let g:fuf_enumeratingLimit = 5000
-let g:fuf_coveragefile_prompt = '=>'
+let g:fuf_coveragefile_prompt = '=>x'
+" }}}2
+
+" Settings for Unite {{{2
+" ignore file pattens
+call unite#custom#source('file,file_rec,file_rec/async', 'ignore_pattern', '\v\~$|\.(o|lock|dat|out|output|sassc|scssc|exe|dll|bak|orig|swp|zip)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|(tmp|log|db/migrate|vendor)|tags')
+let g:unite_source_history_yank_enable = 1
+" mappings
+nnoremap <silent> ,f :<C-u>Unite -start-insert file_rec/async:!<CR>
+nnoremap <silent> ,e :Unite file<CR>
+nnoremap <silent> ,r :Unite file_mru<CR>
+nnoremap <silent> ,b :Unite buffer<CR>
+nnoremap <silent> ,h :Unite history/yank<CR>
+
 " }}}2
 
 " Ack Mappings {{{2
@@ -405,6 +418,16 @@ function! s:get_visual_selection() "{{{3
 	 return join(lines, "\n")
 endfunction
 "}}}3
+" }}}2
+
+" Pt Mappings {{{2
+nnoremap <silent> ,g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+if executable('pt')
+  let g:unite_source_grep_command = 'pt'
+  let g:unite_source_grep_default_opts = '--nogroup --nocolor'
+  let g:unite_source_grep_recursive_opt = ''
+  let g:unite_source_grep_encoding = 'utf-8'
+endif
 " }}}2
 
 " Settings for YouCompleteMe{{{2
