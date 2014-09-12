@@ -206,7 +206,7 @@ nmap ,v :e $HOME/.vimrc<CR>
 "}}}2
 
 " Folder mappings{{{2
-" nmap <silent> ,f :set foldmethod=indent<CR>
+"nmap <leader>f :set foldmethod=indent<CR>
 "set foldmethod=indent
 "nnoremap <leader><SPACE> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 " }}}2
@@ -328,7 +328,7 @@ noremap <C-@>f  :echo cfi#format("%s", "")<CR>
 " }}}2
 
 " Open directory with NERDTree {{{2
-"autocmd VimEnter * call OpenWithNERDTree()
+autocmd VimEnter * call OpenWithNERDTree()
 
 function! OpenWithNERDTree()
   if 0 == argc()
@@ -358,16 +358,68 @@ nnoremap <silent> ,e :Unite file<CR>
 nnoremap <silent> ,r :Unite file_mru<CR>
 nnoremap <silent> ,b :Unite buffer<CR>
 nnoremap <silent> ,h :Unite history/yank<CR>
+" }}}2
 
+" godef Settings {{{2
+ let g:godef_split = 4
+"let g:godef_same_file_in_same_window = 1
+" }}}2
+
+" Ag Mappings {{{2
+" high light search result
+let g:aghighlight = 1
+
+nmap <C-A> :call AgWord()<CR>
+vmap <C-A> :call AgWordV()<CR>
+nmap <C-@>l :call AgDoubleQuote()<CR>
+
+function! AgWord() "{{{3
+  let l:cWord = expand("<cword>")
+  if empty(l:cWord)
+    echo "Please selece a word"
+  else
+    exe ":AgWord"  l:cWord
+  endif
+endfunction
+"}}}3
+
+function! AgWordV() "{{{3
+   let l:selectedText = s:get_visual_selection()
+   let l:wds = split(l:selectedText, " ")
+	 let joinedWords = join(l:wds)
+	 let searchText = "\"".joinedWords."\""
+   exe ":Ag"  searchText
+endfunction
+"}}}3
+
+function! AgDoubleQuote() "{{{3
+	let l:curLine = getline(".")
+	if empty(l:curLine)
+		echo "empty line"
+		return
+	endif
+	let l:arr = matchstr(l:curLine, '[\"].*\"')
+	let l:matchedText = l:arr[1:-2]
+	if l:matchedText != ""
+   	exe ":Ag"  l:matchedText
+	else
+		let l:arr2 = matchstr(l:curLine, "[\'].*\'")
+		let l:matchedText2 = l:arr2[1:-2]
+		if l:matchedText2 != ""
+			exe ":Ag"  l:matchedText2
+		endif
+	endif
+endfunction
+"}}}3
 " }}}2
 
 " Ack Mappings {{{2
 " high light search result
 let g:ackhighlight = 1
 
-nmap <C-A> :call AckWord()<CR>
-vmap <C-A> :call AckWordV()<CR>
-nmap <C-@>l :call AckDoubleQuote()<CR>
+"nmap <C-A> :call AckWord()<CR>
+"vmap <C-A> :call AckWordV()<CR>
+"nmap <C-@>l :call AckDoubleQuote()<CR>
 
 function! AckWord() "{{{3
   let l:cWord = expand("<cword>")
