@@ -145,6 +145,15 @@ set expandtab
 " Set leader key
 let g:mapleader='\'
 
+"nnoremap <leader>q" ciw"<Esc>P"
+"nnoremap <leader>q" ciw'Ctrl+r"'
+nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
+
+" Select realated mappings {{{2
+map <SPACE> <Plug>(expand_region_expand)
+map <S-SPACE> <Plug>(expand_region_shrink)
+" }}}2
+
 " Search realated mappings {{{2
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
 " which is the default
@@ -206,9 +215,9 @@ nmap ,v :e $HOME/.vimrc<CR>
 "}}}2
 
 " Folder mappings{{{2
-"nmap <leader>f :set foldmethod=indent<CR>
+nmap <leader>f :set foldmethod=indent<CR>
 "set foldmethod=indent
-"nnoremap <leader><SPACE> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+nnoremap <leader><SPACE> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 " }}}2
 
 " Shell related TODO{{{2
@@ -236,8 +245,8 @@ nnoremap Q q
 nnoremap <C-]> g<C-]>
 "}}}2
 
-" Use space to trigger command mode {{{2
-nnoremap <SPACE> :
+"" Use space to trigger command mode {{{2
+"nnoremap <SPACE> :
 "}}}2
 
 " Copy, Paste related {{{2
@@ -311,6 +320,10 @@ source ~/.vim/VundleFile
 filetype plugin indent on
 "}}}2
 
+" Golint {{{1
+set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
+"}}}2
+
 " Settings for comments.vim {{{2
 let g:comments_map_keys = 0
 " key-mappings for comment line in normal mode
@@ -342,23 +355,23 @@ nmap <silent> ,d <Plug>DashSearch
 "}}}2
 
 " Settings for FuzzyFinder {{{2
-nnoremap <C-P>  :FufCoverageFile!<cr>
-let g:fuf_coveragefile_exclude = '\v\~$|\.(o|exe|dll|bak|orig|swp)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|(tmp|log|db/migrate|vendor)'
-let g:fuf_enumeratingLimit = 5000
-let g:fuf_coveragefile_prompt = '=>x'
+"nnoremap <C-P>  :FufCoverageFile!<cr>
+"let g:fuf_coveragefile_exclude = '\v\~$|\.(o|exe|dll|bak|orig|swp)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|(tmp|log|db/migrate|vendor)'
+"let g:fuf_enumeratingLimit = 5000
+"let g:fuf_coveragefile_prompt = '=>'
 " }}}2
 
 " Settings for Unite {{{2
 " ignore file pattens
-call unite#custom#source('file,file_rec,file_rec/async', 'ignore_pattern', '\v\~$|\.(o|lock|dat|out|output|sassc|scssc|exe|dll|bak|orig|swp|zip)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|(tmp|log|db/migrate|vendor)|tags')
+call unite#custom#source('file,file_rec,file_rec/async', 'ignore_pattern', '\v\~$|\.(o|lock|dat|out|output|sassc|scssc|exe|dll|bak|orig|swp|zip)$|(^|[/\\])\.(hg|git|bzr|vagrant)($|[/\\])|(tmp|log|db/migrate|vendor)|tags')
 let g:unite_source_history_yank_enable = 1
 " mappings
-nnoremap <silent> ,f :<C-u>Unite -start-insert file_rec/async:!<CR>
+nnoremap <silent> <C-p> :<C-u>Unite -start-insert file_rec/async:!<CR>
 nnoremap <silent> ,e :Unite file<CR>
 nnoremap <silent> ,r :Unite file_mru<CR>
 nnoremap <silent> ,b :Unite buffer<CR>
 nnoremap <silent> ,h :Unite history/yank<CR>
-" }}}2
+" }}}
 
 " godef Settings {{{2
  let g:godef_split = 4

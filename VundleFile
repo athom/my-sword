@@ -9,7 +9,7 @@ Bundle 'gmarik/vundle'
 "Bundle 'bsl/obviousmode'
 Bundle 'L9'
 Bundle 'FuzzyFinder'
-Bundle 'surround.vim'
+Bundle 'tpope/vim-surround'
 Bundle 'cscope.vim'
 "Bundle 'grep.vim'
 "Bundle 'bsl/obviousmode'
@@ -24,7 +24,7 @@ Bundle 'cscope.vim'
 "Bundle 'scrooloose/syntastic.git'
 "Bundle 'scrooloose/nerdcommenter'
 Bundle 'majutsushi/tagbar'
-Bundle 'athom/vim-plugin-minibufexpl'
+"Bundle 'athom/vim-plugin-minibufexpl'
 "Bundle 'AndrewRadev/linediff.vim.git'
 "Bundle 'xuhdev/SingleCompile'
 "Bundle 'endwise.vim'
@@ -43,6 +43,8 @@ Bundle 'Shougo/neomru.vim'
 
 " Jumping {{{1
 "Bundle 'mhinz/vim-signify'
+Bundle 'diabloneo/cscope_maps.vim'
+Bundle 'sk1418/QFGrep'
 " }}}1
 "
 " Colors {{{1
@@ -69,11 +71,12 @@ Bundle 'tomasr/molokai'
 "Bundle 'foldcol.vim'
 "Bundle 'foldutil.vim'
 "Bundle 'sessionman.vim'
-Bundle 'drmingdrmer/xptemplate.git'
+"Bundle 'drmingdrmer/xptemplate.git'
 "Bundle 'range-search.vim'
 "Bundle 'tpope/vim-afterimage.git'
 "Bundle 'chrisbra/NrrwRgn.git'
 Bundle 'mileszs/ack.vim.git'
+Bundle 'terryma/vim-expand-region'
 "Bundle 'tpope/vim-abolish.git'
 "}}}1
 
@@ -172,6 +175,11 @@ Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
 " Bundle 'humiaozuzu/TabBar'
 
+" Docker Vundles {{{1
+Bundle 'ekalinin/Dockerfile.vim'
+" }}}1
+
 Bundle 'terryma/vim-multiple-cursors'
 
+Bundle 'leafgarland/typescript-vim'
 " vim: ft=vim
